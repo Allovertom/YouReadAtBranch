@@ -1,10 +1,17 @@
-astroid @ file:///opt/concourse/worker/volumes/live/21fd14a9-2a7e-484b-7394-5a9912cdcf80/volume/astroid_1592498459180/work
+astroid==2.4.2
 certifi==2020.6.20
 click==7.1.2
 Flask==1.1.2
 gunicorn==20.0.4
+isort==4.3.21
 itsdangerous==1.1.0
 Jinja2==2.11.2
+lazy-object-proxy==1.4.3
 MarkupSafe @ file:///opt/concourse/worker/volumes/live/cb778296-98db-45ad-411e-6f726e102dc3/volume/markupsafe_1594371638608/work
+mccabe==0.6.1
+pylint @ file:///opt/concourse/worker/volumes/live/0a2a544e-806a-4267-74b2-a3f95578c3f2/volume/pylint_1592498630326/work
+six==1.15.0
 SQLAlchemy @ file:///opt/concourse/worker/volumes/live/86f00801-38ec-4f4c-6fc3-6938aacd40ba/volume/sqlalchemy_1597774940263/work
+toml @ file:///tmp/build/80754af9/toml_1592853716807/work
 Werkzeug==1.0.1
+wrapt==1.11.2
