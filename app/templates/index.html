@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-    </head>
         <title>{{name}}</title>
+    </head>
+    <a href="/logout">ログアウトする</a>
     <body>
     {% if name == "kiyokiyo" %}
     <h1>スペシャル{{name}}神社</h1>
@@ -11,13 +12,29 @@
     {% else %}
     <h1>ただの神社</h1>
     {% endif %}
-    <form action="/index" method="POST">
-        <input type="text" name="name" placeholder="Enter name">
-        <input type="submit" value="Submit">
-    </form>
+    
     <img src="/static/images/torii.png" alt="鳥居">
-    {% for onegai in all_onegai %}
-    <p>{{onegai.title}}：{{onegai.body}}（{{onegai.date}}）</p>
-    {% endfor %}
+    <form action="/add" method="post">
+        <input type="text" name="title" placeholder="title">
+        <input type="text" name="body" placeholder="body">
+        <input type="submit" value="Add">
+    </form>
+
+    <form action="/update" method="post", id="update">
+        <input type="text" name="title" placeholder="title">
+        <input type="text" name="body" placeholder="body">
+        <input type="submit" value="Update">
+    </form>
+    <form action="/delete" method="post" id="delete">
+        <input type="submit" value="Delete Selected All Onegai">
+    </form>
+        {% for onegai in all_onegai %}
+        <div>
+            <input type="radio" name="update" value={{onegai.id}}>
+            <input type="checkbox" name="delete" form="delete" value={{onegai.id}}>
+            {{onegai.title}}：{{onegai.body}}（{{onegai.date}}）
+        </div>
+        {% endfor %}
+    </form>
     </body>
 </html>
