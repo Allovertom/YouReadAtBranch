@@ -22,6 +22,21 @@ def index():
 
 @app.route("/add",methods=["post"])
 def add():
+    #url = request.form["url"]
+    ###urlから、論文タイトル、アブスト本文を抜く    
+    #title =
+    #body = 
+
+    ###アブストを文章ごとに分ける
+
+    ###課題、解決法、応用を初期化
+    #prob, sol, app = 0, 0, 0 
+
+    ###DBにデータ保存
+    #content = PaperContent(url,title,body,prob,sol,app,datetime.now())
+    #db_session.add(content)
+    #db_session.commit()
+
     title = request.form["title"]
     body = request.form["body"]
     content = OnegaiContent(title,body,datetime.now())

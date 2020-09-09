@@ -6,14 +6,12 @@
     <a href="/logout">ログアウトする</a>
     <body>
     {% if name == "kiyokiyo" %}
-    <h1>スペシャル{{name}}神社</h1>
-    {% elif name %}
-    <h1>{{name}}神社</h1>
+    <h1>YouReadPaper for {{name}}</h1>
     {% else %}
     <h1>ただの神社</h1>
     {% endif %}
     
-    <img src="/static/images/torii.png" alt="鳥居">
+    <img src="/static/images/ai.png" alt="AI">
     <form action="/add" method="post">
         <input type="text" name="title" placeholder="title">
         <input type="text" name="body" placeholder="body">
