@@ -3,7 +3,7 @@ from models.database import Base
 from datetime import datetime
 
 
-class OnegaiContent(Base):
+""" class OnegaiContent(Base):
     __tablename__ = 'onegaicontents'
     id = Column(Integer, primary_key=True)
     title = Column(String(128), unique=True)
@@ -13,6 +13,29 @@ class OnegaiContent(Base):
     def __init__(self, title=None, body=None, date=None):
         self.title = title
         self.body = body
+        self.date = date
+
+    def __repr__(self):
+        return '<Title %r>' % (self.title) """
+
+class PaperContent(Base):
+    __tablename__ = 'papercontents'
+    id = Column(Integer, primary_key=True)
+    url = Column(Text)
+    title = Column(Text)
+    body = Column(Text)
+    prob = Column(Integer)
+    sol = Column(Integer)
+    app = Column(Integer)
+    date = Column(DateTime, default=datetime.now())
+
+    def __init__(self, url=None, title=None, body=None, prob=None, sol=None, app=None ,date=None):
+        self.url = url
+        self.title = title
+        self.body = body
+        self.prob = prob
+        self.sol = sol
+        self.app = app
         self.date = date
 
     def __repr__(self):
