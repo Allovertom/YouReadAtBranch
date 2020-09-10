@@ -21,15 +21,17 @@ def index():
         return redirect(url_for("top"))
 
 @app.route("/url",methods=["post"])
-def add():
+def url():
     url = request.form["url"]
     print(url)
     ###urlから、論文タイトル、アブスト本文を抜く    
-    #title =
-    #body = 
+    #requestでhtmlのオブジェクト 取得
+    #BeautifulSoupでスクレイピング。
+    #title=
+    #body=
 
     ###アブストを文章ごとに分ける
-
+    
     ###課題、解決法、応用を初期化
     #prob, sol, app = 0, 0, 0 
 
