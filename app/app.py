@@ -1,6 +1,6 @@
 #Flaskとrender_template（HTMLを表示させるための関数）をインポート
 from flask import Flask,render_template, request, session,redirect,url_for
-from models.models import OnegaiContent, User
+from models.models import PaperContent, User
 from models.database import db_session
 from datetime import datetime
 from app import key
@@ -15,8 +15,8 @@ app.secret_key = key.SECRET_KEY
 def index():
     if "user_name" in session:
         name = session["user_name"]
-        all_onegai = OnegaiContent.query.all()
-        return render_template("index.html",name=name,all_onegai=all_onegai)
+        all_contents = PaperContent.query.all()
+        return render_template("index.html",name=name,all_contents=all_contents)
     else:
         return redirect(url_for("top"))
 
@@ -39,14 +39,14 @@ def add():
 
     title = request.form["title"]
     body = request.form["body"]
-    content = OnegaiContent(title,body,datetime.now())
+    content = PaperContent(title,body,datetime.now())
     db_session.add(content)
     db_session.commit()
     return redirect(url_for("index"))
 
 @app.route("/update",methods=["post"])
 def update():
-    content = OnegaiContent.query.filter_by(id=request.form["update"]).first()
+    content = PaperContent.query.filter_by(id=request.form["update"]).first()
     content.title = request.form["title"]
     content.body = request.form["body"]
     db_session.commit()
@@ -56,7 +56,7 @@ def update():
 def delete():
     id_list = request.form.getlist("delete")
     for id in id_list:
-        content = OnegaiContent.query.filter_by(id=id).first()
+        content = PaperContent.query.filter_by(id=id).first()
         db_session.delete(content)
     db_session.commit()
     return redirect(url_for("index"))

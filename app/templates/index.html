@@ -26,11 +26,11 @@
     <form action="/delete" method="post" id="delete">
         <input type="submit" value="Delete Selected All Onegai">
     </form>
-        {% for onegai in all_onegai %}
+        {% for content in all_contents %}
         <div>
-            <input type="radio" name="update" value={{onegai.id}}>
-            <input type="checkbox" name="delete" form="delete" value={{onegai.id}}>
-            {{onegai.title}}：{{onegai.body}}（{{onegai.date}}）
+            <input type="radio" name="update" value={{content.id}}>
+            <input type="checkbox" name="delete" form="delete" value={{content.id}}>
+            {{content.title}}：{{content.body}}（{{content.date}}）
         </div>
         {% endfor %}
     </form>
