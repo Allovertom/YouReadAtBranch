@@ -30,7 +30,8 @@
         <div>
             <input type="radio" name="update" value={{content.id}}>
             <input type="checkbox" name="delete" form="delete" value={{content.id}}>
-            {{content.title}}：{{content.body}}（{{content.date}}）
+            {{content.title}}：{{content.body}}：{{content.prob}}
+            ：{{content.sol}}：{{content.app}}（{{content.date}}）
         </div>
         {% endfor %}
     </form>
