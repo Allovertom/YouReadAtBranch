@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{name}}</title>
+        <title>YouReadPaper</title>
     </head>
     <a href="/logout">ログアウトする</a>
     <body>
-    {% if name == "kiyokiyo" %}
     <h1>YouReadPaper for {{name}}</h1>
-    {% else %}
-    <h1>ただの神社</h1>
-    {% endif %}
+   
     
     <img src="/static/images/ai.png" alt="AI">
     <form action="/add" method="post">
