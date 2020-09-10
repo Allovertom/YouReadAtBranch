@@ -20,9 +20,10 @@ def index():
     else:
         return redirect(url_for("top"))
 
-@app.route("/add",methods=["post"])
+@app.route("/url",methods=["post"])
 def add():
-    #url = request.form["url"]
+    url = request.form["url"]
+    print(url)
     ###urlから、論文タイトル、アブスト本文を抜く    
     #title =
     #body = 
@@ -37,11 +38,12 @@ def add():
     #db_session.add(content)
     #db_session.commit()
 
-    title = request.form["title"]
+    """ title = request.form["title"]
     body = request.form["body"]
     content = PaperContent(title,body,datetime.now())
     db_session.add(content)
-    db_session.commit()
+    db_session.commit() """
+
     return redirect(url_for("index"))
 
 @app.route("/update",methods=["post"])
