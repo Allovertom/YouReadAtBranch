@@ -5,6 +5,7 @@ from models.database import db_session
 from datetime import datetime
 from app import key
 from hashlib import sha256
+from app.scraper import url2list
 
 #Flaskオブジェクトの生成
 app = Flask(__name__)
