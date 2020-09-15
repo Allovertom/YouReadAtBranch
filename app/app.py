@@ -25,6 +25,9 @@ def index():
 def url():
     url = request.form["url"]
     print(url)
+    title_en, abst_en_ls, title_jp, abst_jp_ls = url2list(url)
+    print("英語タイトル：", title_en, "英語アブスト:", abst_en_ls, "日本語タイトル:", title_jp, "日本語アブスト:", abst_jp_ls)
+
     ###urlから、論文タイトル、アブスト本文を抜く    
     #requestでhtmlのオブジェクト 取得
     #BeautifulSoupでスクレイピング。
