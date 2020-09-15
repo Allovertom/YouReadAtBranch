@@ -36,14 +36,15 @@ def url():
     #title_jp,abst_jp_ls[i],prob,sol,app,datetime.now()) for i in len(abst_en_ls)]
     #contents = [PaperContent(url,title_en,abst_en_ls[i],
     #title_jp,abst_jp_ls[i],prob,sol,app,datetime.now()) for i in len(abst_en_ls)]
-
+    abst_en = abst_en_ls
+    abst_jp = abst_jp_ls
     db_session.add_all([
-        PaperContent(url,title_en,abst_en_ls[0],title_jp,abst_jp_ls[0],
+        PaperContent(url,title_en,abst_en[0],title_jp,abst_jp[0],
         prob,sol,app,datetime.now()),
-        PaperContent(url,title_en,abst_en_ls[1],title_jp,abst_jp_ls[1],
+        PaperContent(url,title_en,abst_en[1],title_jp,abst_jp[1],
         prob,sol,app,datetime.now()),
-        PaperContent(url,title_en,abst_en_ls[2],title_jp,abst_jp_ls[2],
-        prob,sol,app,datetime.now())
+        PaperContent(url,title_en,abst_en[2],title_jp,abst_jp[2],
+        prob,sol,app,datetime.now()),
     ])
     db_session.commit()
 

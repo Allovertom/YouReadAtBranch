@@ -23,12 +23,13 @@
 <!--     <form action="/delete" method="post" id="delete">
         <input type="submit" value="Delete Selected All Onegai">
     </form> -->
-        {% for content in all_contents %}
+        {% for con in all_contents %}
         <div>
-            <input type="radio" name="update" value={{content.id}}>
-            <input type="checkbox" name="delete" form="delete" value={{content.id}}>
-            {{content.title}}：{{content.body}}：{{content.prob}}
-            ：{{content.sol}}：{{content.app}}（{{content.date}}）
+            <input type="radio" name="update" value={{con.id}}>
+            <input type="checkbox" name="delete" form="delete" value={{con.id}}>
+            {{con.title_en}}：{{con.title_jp}}：
+            {{con.abst_en}}:{{con.abst_jp}}
+            ：{{con.sol}}：{{con.app}}（{{con.date}}）
         </div>
         {% endfor %}
     </form>
