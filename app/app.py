@@ -27,22 +27,13 @@ def url():
     print(url)
     title_en, abst_en_ls, title_jp, abst_jp_ls = url2list(url)
     print("英語タイトル：", title_en, "英語アブスト:", abst_en_ls, "日本語タイトル:", title_jp, "日本語アブスト:", abst_jp_ls)
+    ### 課題、解決法、応用を初期化
+    prob, sol, app = 0, 0, 0 
 
-    ###urlから、論文タイトル、アブスト本文を抜く    
-    #requestでhtmlのオブジェクト 取得
-    #BeautifulSoupでスクレイピング。
-    #title=
-    #body=
-
-    ###アブストを文章ごとに分ける
-    
-    ###課題、解決法、応用を初期化
-    #prob, sol, app = 0, 0, 0 
-
-    ###DBにデータ保存
-    #content = PaperContent(url,title,body,prob,sol,app,datetime.now())
-    #db_session.add(content)
-    #db_session.commit()
+    ### DBにデータ保存
+    content = PaperContent(url,title_en,abst_en_ls[0],title_jp,abst_jp_ls[0],prob,sol,app,datetime.now())
+    db_session.add(content)
+    db_session.commit()
 
     """ title = request.form["title"]
     body = request.form["body"]
