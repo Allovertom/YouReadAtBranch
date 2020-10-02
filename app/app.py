@@ -6,6 +6,7 @@ from datetime import datetime
 from app import key
 from hashlib import sha256
 from app.scraper import url2list
+from sqlalchemy.sql import func
 
 #Flaskオブジェクトの生成
 app = Flask(__name__)
@@ -16,7 +17,8 @@ app.secret_key = key.SECRET_KEY
 def index():
     if "user_name" in session:
         name = session["user_name"]
-        all_contents = PaperContent.query.all()
+        all_contents = db_session.query(PaperContent.title_en, PaperContent.date).all()
+        #all_contents = PaperContent.query.all()
         return render_template("index.html",name=name,all_contents=all_contents)
     else:
         return redirect(url_for("top"))
@@ -38,13 +40,14 @@ def url():
     #title_jp,abst_jp_ls[i],prob,sol,app,datetime.now()) for i in len(abst_en_ls)]
     abst_en = abst_en_ls
     abst_jp = abst_jp_ls
+    #下記データ３つしか入っていない。要修正
     db_session.add_all([
         PaperContent(url,title_en,abst_en[0],title_jp,abst_jp[0],
-        prob,sol,app,datetime.now()),
+        prob,sol,app,datetime.now().replace(microsecond=0)),
         PaperContent(url,title_en,abst_en[1],title_jp,abst_jp[1],
-        prob,sol,app,datetime.now()),
+        prob,sol,app,datetime.now().replace(microsecond=0)),
         PaperContent(url,title_en,abst_en[2],title_jp,abst_jp[2],
-        prob,sol,app,datetime.now()),
+        prob,sol,app,datetime.now().replace(microsecond=0)),
     ])
     db_session.commit()
 
