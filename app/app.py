@@ -6,7 +6,7 @@ from datetime import datetime
 from app import key
 from hashlib import sha256
 from app.scraper import url2list
-from sqlalchemy.sql import func
+from sqlalchemy import func
 
 #Flaskオブジェクトの生成
 app = Flask(__name__)
@@ -17,9 +17,11 @@ app.secret_key = key.SECRET_KEY
 def index():
     if "user_name" in session:
         name = session["user_name"]
-        all_contents = db_session.query(PaperContent.title_en, PaperContent.date).all()
-        #all_contents = PaperContent.query.all()
-        return render_template("index.html",name=name,all_contents=all_contents)
+        #all_contents = db_session.query(PaperContent.title_en, PaperContent.date).all()
+        latest = db_session.query(func.max(PaperContent.date), PaperContent.url).all()#最新日付とそのURLを取得
+        latest_contents = db_session.query(PaperContent.title_en, PaperContent.title_jp, PaperContent.abst_en, PaperContent.abst_jp, 
+        PaperContent.date).filter(PaperContent.url == latest[0][1]).all()#最新URLと同じURLをDBから引っ張ってくる
+        return render_template("index.html",name=name,all_contents=latest_contents)
     else:
         return redirect(url_for("top"))
 

@@ -22,8 +22,8 @@ def url2list(url):
     abst_en = ' '.join(abst_en.splitlines())
 
     # アブストを文章ごとに分ける
-    abst_en_ls = abst_en.split(".")
-    abst_en_ls.remove('')
+    abst_en_ls = abst_en.split(". ")
+    #abst_en_ls.remove('')
 
     # 翻訳
     translator = Translator()
