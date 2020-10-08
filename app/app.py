@@ -63,10 +63,18 @@ def url():
 
 @app.route("/update",methods=["post"])
 def update():
-    content = PaperContent.query.filter_by(id=request.form["update"]).first()
+    """ content = PaperContent.query.filter_by(id=request.form["update"]).first()
     content.title = request.form["title"]
     content.body = request.form["body"]
+    db_session.commit() """
+    prob_con = PaperContent.query.filter_by(id=request.form["prob"]).first()
+    a=1
+    print(prob_con.prob)
+    prob_con.prob = 1
+    print(prob_con.prob)
+    db_session.add(prob_con)
     db_session.commit()
+
     return redirect(url_for("index"))
 
 @app.route("/delete",methods=["post"])

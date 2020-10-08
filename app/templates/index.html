@@ -27,9 +27,9 @@
         {% for con in all_contents %}
         <div>
             <p>
-            <input type="radio" name="update" value={{con.id}}>課題
-            <input type="radio" name="update" value={{con.id}}>解決法
-            <input type="radio" name="update" value={{con.id}}>適応先｜
+            <input type="radio" name="prob" form="update" value={{con.id}}>課題
+            <input type="radio" name="sol" form="update" value={{con.id}}>解決法
+            <input type="radio" name="app" form="update" value={{con.id}}>適応先｜
             <!-- <input type="checkbox" name="delete" form="delete" value={{con.id}}> -->
             {{con.title_en}}：{{con.title_jp}}：
             {{con.abst_en}}:{{con.abst_jp}}
