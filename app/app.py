@@ -20,7 +20,8 @@ def index():
         #all_contents = db_session.query(PaperContent.title_en, PaperContent.date).all()
         latest = db_session.query(func.max(PaperContent.date), PaperContent.url).all()#最新日付とそのURLを取得
         latest_contents = db_session.query(PaperContent.title_en, PaperContent.title_jp, PaperContent.abst_en, PaperContent.abst_jp, 
-        PaperContent.date).filter(PaperContent.url == latest[0][1]).all()#最新URLと同じURLをDBから引っ張ってくる
+        PaperContent.date, PaperContent.id, PaperContent.prob, PaperContent.sol,
+        PaperContent.app).filter(PaperContent.url == latest[0][1]).all()#最新URLと同じURLをDBから引っ張ってくる
         return render_template("index.html",name=name,all_contents=latest_contents)
     else:
         return redirect(url_for("top"))
@@ -67,8 +68,8 @@ def update():
     content.title = request.form["title"]
     content.body = request.form["body"]
     db_session.commit() """
-    prob_con = PaperContent.query.filter_by(id=request.form["prob"]).first()
-    a=1
+    #prob_con = PaperContent.query.filter_by(id=request.form["prob"]).first()
+    prob_con = PaperContent.query.filter_by(id=request.form.get("prob")).first()
     print(prob_con.prob)
     prob_con.prob = 1
     print(prob_con.prob)

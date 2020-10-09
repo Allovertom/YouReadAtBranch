@@ -18,26 +18,26 @@
     <form action="/update" method="post", id="update">
         <!-- <input type="text" name="title" placeholder="title">
         <input type="text" name="body" placeholder="body"> -->
-        <input type="submit" value="分類内容登録">
-    </form>
 <!--     <form action="/delete" method="post" id="delete">
         <input type="submit" value="Delete Selected All Onegai">
     </form> -->
     <p> 課題・解決法・適応先の分類 ｜</p>
         {% for con in all_contents %}
         <div>
-            <p>
-            <input type="radio" name="prob" form="update" value={{con.id}}>課題
-            <input type="radio" name="sol" form="update" value={{con.id}}>解決法
-            <input type="radio" name="app" form="update" value={{con.id}}>適応先｜
+            <!-- <input type="radio" name="prob" form="update" value={{con.id}} id="pr"> -->
+            <input type="radio" name="prob" value={{con.id}}>課題
+            <!-- <input type="radio" name="sol" form="update" value={{con.id}}>解決法
+            <input type="radio" name="app" form="update" value={{con.id}}>適応先｜ -->
             <!-- <input type="checkbox" name="delete" form="delete" value={{con.id}}> -->
-            {{con.title_en}}：{{con.title_jp}}：
-            {{con.abst_en}}:{{con.abst_jp}}
-            ：{{con.sol}}：{{con.app}}（{{con.date}}）
+            {{con.id}}|{{con.title_en}}：{{con.abst_en}}:
+            {{con.prob}}：{{con.sol}}：{{con.app}}
             </input>
-            </p>
         </div>
         {% endfor %}
-    <!-- </form> -->
+
+        <div>
+            <input type="submit" value="分類内容登録">
+        </div>
+    </form>
     </body>
 </html>
