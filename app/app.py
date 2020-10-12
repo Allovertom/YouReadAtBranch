@@ -70,12 +70,27 @@ def update():
     content.title = request.form["title"]
     content.body = request.form["body"]
     db_session.commit() """
-    #prob_con = PaperContent.query.filter_by(id=request.form["prob"]).first()
-    prob_con = PaperContent.query.filter_by(id=request.form.get("prob")).first()
-    print(prob_con.prob)
-    prob_con.prob = 1
-    print(prob_con.prob)
-    db_session.add(prob_con)
+    try:
+        prob_con = PaperContent.query.filter_by(id=request.form.get("prob")).first()
+        prob_con.prob = 1#probのDB更新
+        db_session.add(prob_con)
+    except AttributeError:
+        pass
+
+    try:
+        sol_con = PaperContent.query.filter_by(id=request.form.get("sol")).first()
+        sol_con.sol = 1#solのDB更新
+        db_session.add(sol_con)
+    except AttributeError:
+        pass
+
+    try:
+        app_con = PaperContent.query.filter_by(id=request.form.get("app")).first()
+        app_con.app = 1#appのDB更新
+        db_session.add(app_con)
+    except AttributeError:
+        pass
+
     db_session.commit()
 
     return redirect(url_for("index"))
