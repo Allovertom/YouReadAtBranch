@@ -32,7 +32,7 @@ def url():
     print(url)
     title_en, abst_en_ls, title_jp, abst_jp_ls = url2list(url)
     print("英語タイトル：", title_en, "英語アブスト:", abst_en_ls,
-     "日本語タイトル:", title_jp, "日本語アブスト:", abst_jp_ls)
+    "日本語タイトル:", title_jp, "日本語アブスト:", abst_jp_ls)
     ### 課題、解決法、応用を初期化
     prob, sol, app = 0, 0, 0 
 
@@ -43,7 +43,9 @@ def url():
     #title_jp,abst_jp_ls[i],prob,sol,app,datetime.now()) for i in len(abst_en_ls)]
     abst_en = abst_en_ls
     abst_jp = abst_jp_ls
+    print("en;"+abst_en[0], "jp;"+abst_jp[0])
     #下記データ３つしか入っていない。要修正
+    print("英語タイトル：", title_en, "英語アブスト:", abst_en_ls)
     db_session.add_all([
         PaperContent(url,title_en,abst_en[0],title_jp,abst_jp[0],
         prob,sol,app,datetime.now().replace(microsecond=0)),

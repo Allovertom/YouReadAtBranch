@@ -31,7 +31,7 @@ class PaperContent(Base):
     app = Column(Integer)
     date = Column(DateTime, default=datetime.now())
 
-    def __init__(self, url=None, title_en=None, abst_jp=None, title_jp=None, abst_en=None, prob=None, sol=None, app=None ,date=None):
+    def __init__(self, url=None, title_en=None, abst_en=None, title_jp=None, abst_jp=None, prob=None, sol=None, app=None ,date=None):
         self.url = url
         self.title_en = title_en
         self.abst_en = abst_en
