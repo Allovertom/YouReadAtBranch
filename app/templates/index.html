@@ -13,8 +13,6 @@
         <!-- <input type="text" name="body" placeholder="body"> -->
         <input type="submit" value="input arXive URL">
     </form>
-
-    <form action="/update" method="post", id="update">
         <!-- <input type="text" name="title" placeholder="title">
         <input type="text" name="body" placeholder="body"> -->
 <!--     <form action="/delete" method="post" id="delete">
@@ -22,6 +20,15 @@
     </form> -->
     <h1>{{ all_contents[0][0] }}</h1>
     <h3>{{ all_contents[0][1] }}</h3>
+
+    <form action="/learning" method="post", id="learning">
+    <div><input type="submit" value="学習"></div>
+    </form>
+    <form action="/estimate" method="post", id="estimate">
+    <div><input type="submit" value="推定結果反映"></div>
+    </form>
+
+    <form action="/update" method="post", id="update">
         {% for con in all_contents %}
         <div>
             <!-- <input type="radio" name="prob" form="update" value={{con.id}} id="pr"> -->
@@ -30,7 +37,7 @@
             <!-- <input type="checkbox" name="delete" form="delete" value={{con.id}}> -->
             <br>【ID{{con.id}}】<br>{{con.abst_en}}<br>{{con.abst_jp}}
             <br>DB内記録|{{con.prob}}課題|{{con.sol}}解決法|{{con.app}}適応先|<br>
-            |<input type="checkbox"" name="prob" value={{con.id}}>課題|
+            |<input type="checkbox" name="prob" value={{con.id}}>課題|
             <input type="checkbox" name="sol" value={{con.id}}>解決法|
             <input type="checkbox" name="app" value={{con.id}}>適応先|
             </input>

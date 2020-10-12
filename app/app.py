@@ -70,6 +70,15 @@ def update():
     db_session.commit()
 
     return redirect(url_for("index"))
+@app.route("/learning",methods=["post"])
+def learning():
+    
+    return redirect(url_for("index"))
+
+@app.route("/estimate",methods=["post"])
+def estimate():
+    
+    return redirect(url_for("index"))
 
 @app.route("/delete",methods=["post"])
 def delete():
