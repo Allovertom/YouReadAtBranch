@@ -46,14 +46,17 @@ def url():
     print("en;"+abst_en[0], "jp;"+abst_jp[0])
     #下記データ３つしか入っていない。要修正
     print("英語タイトル：", title_en, "英語アブスト:", abst_en_ls)
-    db_session.add_all([
+    """ db_session.add_all([
         PaperContent(url,title_en,abst_en[0],title_jp,abst_jp[0],
         prob,sol,app,datetime.now().replace(microsecond=0)),
         PaperContent(url,title_en,abst_en[1],title_jp,abst_jp[1],
         prob,sol,app,datetime.now().replace(microsecond=0)),
         PaperContent(url,title_en,abst_en[2],title_jp,abst_jp[2],
         prob,sol,app,datetime.now().replace(microsecond=0)),
-    ])
+    ]) """
+    papercontents = [PaperContent(url,title_en,abst_en[i],title_jp,abst_jp[i],
+        prob,sol,app,datetime.now().replace(microsecond=0)) for i in range(len(abst_en))]#内包表記で一つづつPaperContent作成
+    db_session.add_all(papercontents)
     db_session.commit()
 
     """ title = request.form["title"]
