@@ -20,8 +20,8 @@ def index():
         #all_contents = db_session.query(PaperContent.title_en, PaperContent.date).all()
         latest = db_session.query(func.max(PaperContent.date), PaperContent.url).all()#最新日付とそのURLを取得
         latest_contents = db_session.query(PaperContent.title_en, PaperContent.title_jp, PaperContent.abst_en, PaperContent.abst_jp, 
-        PaperContent.date, PaperContent.id, PaperContent.prob, PaperContent.sol,
-        PaperContent.app).filter(PaperContent.url == latest[0][1]).all()#最新URLと同じURLをDBから引っ張ってくる
+        PaperContent.date, PaperContent.id, PaperContent.prob, PaperContent.sol, PaperContent.app, PaperContent.prob_est,
+        PaperContent.sol_est, PaperContent.app_est).filter(PaperContent.url == latest[0][1]).all()#最新URLと同じURLをDBから引っ張ってくる
         return render_template("index.html",name=name,all_contents=latest_contents)
     else:
         return redirect(url_for("top"))
@@ -32,14 +32,14 @@ def url():
     print(url)
     title_en, abst_en_ls, title_jp, abst_jp_ls = url2list(url)
     ### 課題、解決法、応用を初期化
-    prob, sol, app = 0, 0, 0 
+    prob, sol, app, prob_est, sol_est, app_est  = 0, 0, 0, 0, 0, 0 
 
     ### DBにデータ保存
     abst_en = abst_en_ls
     abst_jp = abst_jp_ls
     #下記データ３つしか入っていない。要修正
     papercontents = [PaperContent(url,title_en,abst_en[i],title_jp,abst_jp[i],
-        prob,sol,app,datetime.now().replace(microsecond=0)) for i in range(len(abst_en))]#内包表記で一つづつPaperContent作成
+        prob,sol,app,datetime.now().replace(microsecond=0),prob_est, sol_est, app_est) for i in range(len(abst_en))]#内包表記で一つづつPaperContent作成
     db_session.add_all(papercontents)
     db_session.commit()
     return redirect(url_for("index"))
@@ -72,12 +72,17 @@ def update():
     return redirect(url_for("index"))
 @app.route("/learning",methods=["post"])
 def learning():
-    
+    #全データをDBから吸い出し
+    #learning.pyのlearning関数へ引き渡し、前処理、学習、モデルの保存
+    #
+    #
+
     return redirect(url_for("index"))
 
 @app.route("/estimate",methods=["post"])
 def estimate():
-    
+    #学習モデル読み込み
+    #index.htmlの推定値更新(prob_est, sol_est, app_est)
     return redirect(url_for("index"))
 
 @app.route("/delete",methods=["post"])
