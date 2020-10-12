@@ -5,9 +5,8 @@
     </head>
     <a href="/logout">ログアウトする</a>
     <body>
-    <h1>YouReadPaper for {{name}}</h1>
+    <p>YouReadPaper for {{name}}</p>
    
-    
     <img src="/static/images/ai.png" alt="AI">
     <form action="/url" method="post">
         <input type="text" name="url" placeholder="url">
@@ -21,18 +20,19 @@
 <!--     <form action="/delete" method="post" id="delete">
         <input type="submit" value="Delete Selected All Onegai">
     </form> -->
-    <p> 課題・解決法・適応先の分類 ｜</p>
+    <h1>{{ all_contents[0][0] }}</h1>
+    <h3>{{ all_contents[0][1] }}</h3>
         {% for con in all_contents %}
         <div>
             <!-- <input type="radio" name="prob" form="update" value={{con.id}} id="pr"> -->
-            <input type="radio" name="prob" value={{con.id}}>
-            <input type="radio" name="sol" value={{con.id}}>
-            <input type="radio" name="app" value={{con.id}}>
             <!-- <input type="radio" name="sol" form="update" value={{con.id}}>解決法
             <input type="radio" name="app" form="update" value={{con.id}}>適応先｜ -->
             <!-- <input type="checkbox" name="delete" form="delete" value={{con.id}}> -->
-            {{con.id}}|{{con.title_en}}：{{con.abst_en}}:
-            {{con.prob}}：{{con.sol}}：{{con.app}}
+            【ID{{con.id}}】<br>{{con.abst_en}}<br>{{con.abst_jp}}
+            <br>DB内記録|{{con.prob}}課題|{{con.sol}}解決法|{{con.app}}適応先|<br>
+            |<input type="radio" name="prob" value={{con.id}}>課題|
+            <input type="radio" name="sol" value={{con.id}}>解決法|
+            <input type="radio" name="app" value={{con.id}}>適応先|
             </input>
         </div>
         {% endfor %}
