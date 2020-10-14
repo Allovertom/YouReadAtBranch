@@ -7,6 +7,7 @@ from app import key
 from hashlib import sha256
 from app.scraper import url2list
 from sqlalchemy import func
+from app.ML import learning
 
 #Flaskオブジェクトの生成
 app = Flask(__name__)
@@ -73,7 +74,11 @@ def update():
 @app.route("/learning",methods=["post"])
 def learning():
     #全データをDBから吸い出し
-    #learning.pyのlearning関数へ引き渡し、前処理、学習、モデルの保存
+    all_data = db_session.query(PaperContent.abst_en, PaperContent.prob, PaperContent.sol, PaperContent.app).all()
+    #ML.pyのlearning関数へ引き渡し、前処理、学習、モデルの保存
+    model_acc = learning(all_data)
+    print("モデルの精度は"+str(model_acc)+"です。")
+
     #
     #
 
