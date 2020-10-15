@@ -71,13 +71,13 @@ def update():
     db_session.commit()
 
     return redirect(url_for("index"))
-@app.route("/learning",methods=["post"])
-def learning():
+@app.route("/learn",methods=["post"])
+def learn():
     #全データをDBから吸い出し
     all_data = db_session.query(PaperContent.abst_en, PaperContent.prob, PaperContent.sol, PaperContent.app).all()
     #ML.pyのlearning関数へ引き渡し、前処理、学習、モデルの保存
-    model_acc = learning(all_data)
-    print("モデルの精度は"+str(model_acc)+"です。")
+    model_score = learning(all_data)
+    print("モデルの各カテゴリの精度は"+str(model_score)+"です。")
 
     #
     #
