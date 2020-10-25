@@ -17,10 +17,10 @@ Werkzeug==1.0.1
 wrapt==1.11.2
 beautifulsoup4==4.8.2
 urllib3==1.25.8
-requests==2.22.0 
+requests==2.24.0 
 googletrans==2.4.0
 chardet==3.0.4
-idna==2.9
+idna==2.10
 nltk==3.5.0
 tqdm==4.50.2
 click==7.1.2
