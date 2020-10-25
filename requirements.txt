@@ -28,8 +28,8 @@ joblib==0.17.0
 regex==2020.10.11
 numpy==1.19.1
 scikit-learn==0.23.2
-mkl-random==1.1.1
+mkl-random==1.0.1
 threadpoolctl==2.1.0
-mkl-fft==1.2.0
+mkl-fft==1.0.6
 scipy==1.5.0
 
