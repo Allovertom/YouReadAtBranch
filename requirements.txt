@@ -20,7 +20,7 @@ urllib3==1.25.8
 requests==2.22.0 
 googletrans==2.4.0
 chardet==3.0.4
-idna==2.10
+idna==2.9
 nltk==3.5.0
 tqdm==4.50.2
 click==7.1.2
