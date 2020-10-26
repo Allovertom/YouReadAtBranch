@@ -16,7 +16,6 @@ cryptography=3.1=py38h52adbb4_0
 decorator=4.4.2=py_0
 flask=1.1.2=py_0
 googletrans=2.4.0=py_1001
-gunicorn=20.0.4=pypi_0
 idna=2.10=pyh9f0ad1d_0
 intel-openmp=2020.2=258
 ipykernel=5.3.4=py38h5ca1d4c_0
@@ -64,7 +63,6 @@ python_abi=3.8=1_cp38
 pyzmq=19.0.1=py38hb1e8313_1
 readline=8.0=h1de35cc_0
 regex=2020.10.11=py38haf1e3a3_0
-requests=2.24.0=pyh9f0ad1d_0
 scikit-learn=0.23.2=py38h959d312_0
 scipy=1.5.0=py38hbab996c_0
 setuptools=49.6.0=py38_0
